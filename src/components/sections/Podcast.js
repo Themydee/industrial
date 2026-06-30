@@ -9,8 +9,7 @@ export default function Podcast() {
         { n: "03", t: "Manufacturing as the Engine of Growth II", d: " Can a nation achieve lasting economic prosperity without a strong manufacturing sector?", link: "https://www.youtube.com/watch?v=RFVXd7KHe3o" },
         { n: "04", t: "Coming Soon...", d: "Anticipate the next episode in the Industrialisation series.", link: "", isUpcoming: true }
     ];
-    
-    const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/videoseries?list=UULFx3x_8m5lU72lEltwZp6kGg");
+    const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/y5ksLCvHtoQ");
 
     const getEmbed = (url) => {
         const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
