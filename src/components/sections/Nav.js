@@ -53,7 +53,7 @@ export default function Nav({ onApply }) {
           ))}
           
           {!userId ? (
-            <Link href="/sign-in" style={{ fontSize: 14, color: T.dark, fontWeight: 600 }}>Sign In</Link>
+            <Button variant="primary" href="/sign-in" style={{ fontSize: 14, color: T.dark, fontWeight: 600 }}>Sign In</Button>
           ) : (
             <>
               <Link href="/dashboard" style={{ fontSize: 14, color: T.primary, fontWeight: 600 }}>Dashboard</Link>
@@ -62,11 +62,11 @@ export default function Nav({ onApply }) {
             </>
           )}
 
-          {!userId && (
+          {/* {!userId && (
             <Button variant="primary" href="/sign-up">
               Apply to Join
             </Button>
-          )}
+          )} */}
         </div>
         
         <button onClick={() => setMob(!mob)} style={{ display: "none", flexDirection: "column", gap: 5 }} className="mob-ham">

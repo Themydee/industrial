@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import { T, F, TIERS, OFFERINGS, TESTIMONIALS, FAQS, STATES } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import Tag from "@/components/ui/Tag";
+import SocialFollow from "@/components/sections/SocialFollow";
 
 import prisma from "@/lib/prisma";
 import Link from "next/link";
@@ -129,6 +130,7 @@ export default function Home() {
       <SocialProof />
       <VideoGallery />
       <Membership />
+      <SocialFollow />
     </>
   );
 }
