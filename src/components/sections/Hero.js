@@ -17,7 +17,7 @@ export default function Hero({ onApply }) {
                 <div className="animate-up">
                     <Tag color="var(--color-red)">The Premier Leadership Community</Tag>
                     
-                    <h1 className="serif-heading" style={{ fontSize: "clamp(50px, 6vw, 84px)", lineHeight: 0.95, color: "var(--color-dark)", margin: "0 0 32px" }}>
+                    <h1 className="serif-heading" style={{ fontSize: "clamp(36px, 6vw, 84px)", lineHeight: 0.95, color: "var(--color-dark)", margin: "0 0 32px" }}>
                         Industrialise<br />
                         <span style={{ fontStyle: "italic", color: "var(--color-mid)" }}>Africa</span>
                     </h1>

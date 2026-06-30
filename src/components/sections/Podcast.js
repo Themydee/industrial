@@ -23,7 +23,7 @@ export default function Podcast() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, flexWrap: "wrap", gap: 24 }} className="animate-up">
                     <div>
                         <Tag color="var(--color-red)">The Masterclass Series</Tag>
-                        <h2 className="serif-heading" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "var(--color-dark)", margin: "0 0 16px" }}>Industrialisation & Development</h2>
+                        <h2 className="serif-heading" style={{ fontSize: "clamp(28px, 5vw, 56px)", color: "var(--color-dark)", margin: "0 0 16px" }}>Industrialisation & Development</h2>
                     </div>
                     <p style={{ fontSize: 16, color: "var(--color-grey)", fontWeight: 300, maxWidth: 400, textAlign: "right", lineHeight: 1.6 }}>Free to the public. Recorded in high definition. Supported by the community.</p>
                 </div>

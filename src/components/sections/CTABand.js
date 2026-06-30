@@ -4,7 +4,7 @@ export default function CTABand({ onApply }) {
     return (
         <section className="section-padding" style={{ background: "var(--color-dark)", textAlign: "center" }}>
             <div style={{ maxWidth: 800, margin: "0 auto" }} className="animate-up">
-                <h2 className="serif-heading" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--color-white)", lineHeight: 1.1, marginBottom: 32 }}>
+                <h2 className="serif-heading" style={{ fontSize: "clamp(28px, 5vw, 64px)", color: "var(--color-white)", lineHeight: 1.1, marginBottom: 32 }}>
                     Africa doesn't lack great minds.<br />
                     <span style={{ fontStyle: "italic", color: "var(--color-gold)" }}>It lacks people listening to them.</span>
                 </h2>

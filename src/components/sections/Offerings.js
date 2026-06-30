@@ -8,7 +8,7 @@ export default function Offerings() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, flexWrap: "wrap", gap: 24 }} className="animate-up">
                     <div>
                         <Tag color="var(--color-gold)">What We Build</Tag>
-                        <h2 className="serif-heading" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "var(--color-dark)", margin: "0 0 16px" }}>Beyond the Podcast</h2>
+                        <h2 className="serif-heading" style={{ fontSize: "clamp(28px, 5vw, 56px)", color: "var(--color-dark)", margin: "0 0 16px" }}>Beyond the Podcast</h2>
                     </div>
                     <p style={{ fontSize: 16, color: "var(--color-grey)", fontWeight: 300, maxWidth: 400, textAlign: "right", lineHeight: 1.6 }}>An ecosystem of learning, connection, and opportunity.</p>
                 </div>

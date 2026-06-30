@@ -8,8 +8,8 @@ export default function Membership({ onJoin }) {
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 80 }} className="animate-up">
                     <Tag color="var(--color-red)">Join My Network</Tag>
-                    <h2 className="serif-heading" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "var(--color-dark)", margin: "16px 0 24px" }}>Advisory & Access</h2>
-                    <p style={{ fontSize: 16, color: "var(--color-grey)", fontWeight: 300, maxWidth: 600, margin: "0 auto" }}>Direct access to my expertise, network, and masterclasses. Structured to support everyone from students to institutional leaders.</p>
+                    <h2 className="serif-heading" style={{ fontSize: "clamp(28px, 5vw, 56px)", color: "var(--color-dark)", margin: "16px 0 24px" }}>Advisory & Access</h2>
+                    <p style={{ fontSize: 16, color: "var(--color-grey)", lineHeight: 1.6, maxWidth: 500, margin: "0 auto" }}>Direct access to my expertise, network, and masterclasses. Structured to support everyone from students to institutional leaders.</p>
                 </div>
 
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32 }} className="bento-grid">

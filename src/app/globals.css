@@ -138,3 +138,13 @@ button {
   .hide-mob { display: none !important; }
   .show-mob { display: block !important; }
 }
+
+@media(max-width:480px){
+  .section-padding { padding: 60px 16px; }
+  .hero-padding { padding: 80px 16px 40px; }
+  .nav-padding { padding: 12px 16px; }
+  .footer-padding { padding: 40px 16px 30px; }
+  .about-padding { padding: 60px 16px; }
+  .bento-grid { gap: 16px; }
+  .serif-heading { word-break: break-word; hyphens: auto; }
+}
