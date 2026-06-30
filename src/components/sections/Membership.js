@@ -4,7 +4,7 @@ import Btn from "@/components/ui/Btn";
 
 export default function Membership({ onJoin }) {
     return (
-        <section id="membership" style={{ background: "var(--color-ivory)", padding: "120px 48px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <section id="membership" className="section-padding" style={{ background: "var(--color-ivory)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 80 }} className="animate-up">
                     <Tag color="var(--color-red)">Join My Network</Tag>

@@ -3,7 +3,7 @@ import Tag from "@/components/ui/Tag";
 
 export default function Offerings() {
     return (
-        <section id="offerings" style={{ background: "var(--color-white)", padding: "120px 48px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <section id="offerings" className="section-padding" style={{ background: "var(--color-white)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 64, flexWrap: "wrap", gap: 24 }} className="animate-up">
                     <div>

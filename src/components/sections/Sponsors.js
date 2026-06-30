@@ -9,7 +9,7 @@ export default function Sponsors() {
     ];
     
     return (
-        <section id="sponsors" style={{ background: "var(--color-ivory)", padding: "120px 48px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <section id="sponsors" className="section-padding" style={{ background: "var(--color-ivory)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <Tag color="var(--color-red)">Partner With Us</Tag>
                 

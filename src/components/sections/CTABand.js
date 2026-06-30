@@ -2,7 +2,7 @@ import Btn from "@/components/ui/Btn";
 
 export default function CTABand({ onApply }) {
     return (
-        <section style={{ background: "var(--color-dark)", padding: "120px 48px", textAlign: "center" }}>
+        <section className="section-padding" style={{ background: "var(--color-dark)", textAlign: "center" }}>
             <div style={{ maxWidth: 800, margin: "0 auto" }} className="animate-up">
                 <h2 className="serif-heading" style={{ fontSize: "clamp(36px, 5vw, 64px)", color: "var(--color-white)", lineHeight: 1.1, marginBottom: 32 }}>
                     Africa doesn't lack great minds.<br />

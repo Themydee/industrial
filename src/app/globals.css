@@ -12,7 +12,7 @@
   --color-rule: rgba(0, 0, 0, 0.1);
   --color-rule-lt: rgba(0, 0, 0, 0.05);
   
-  --color-ivory: #FAF9F6; /* Extremely clean, slightly warm white */
+  --color-ivory: #FAF9F6;
   --color-ivory-2: #F0EFEB;
   --color-white: #FFFFFF;
   
@@ -67,14 +67,12 @@ button {
   background: none;
 }
 
-/* Elegant Typography Utilities */
 .serif-heading {
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
-/* Animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -97,7 +95,7 @@ button {
 .animate-delay-2 { animation-delay: 0.2s; }
 .animate-delay-3 { animation-delay: 0.3s; }
 
-/* Base grids */
+/* Responsive Grid Classes */
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -111,11 +109,32 @@ button {
   gap: 24px;
 }
 
+/* Responsive Padding Utilities */
+.section-padding { padding: 120px 48px; }
+.hero-padding { padding: 120px 48px 80px; }
+.nav-padding { padding: 20px 48px; }
+.footer-padding { padding: 80px 48px 40px; }
+.about-padding { padding: 100px 48px; }
+
+/* Mobile Utilities */
+.show-mob { display: none !important; }
+
 @media(max-width:1024px){
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hide-mob { display: none !important; }
+  .show-mob { display: block !important; }
 }
 
 @media(max-width:768px){
   .bento-grid { grid-template-columns: 1fr; }
+  .section-padding { padding: 80px 24px; }
+  .hero-padding { padding: 100px 24px 60px; }
+  .nav-padding { padding: 16px 24px; }
+  .footer-padding { padding: 60px 24px 40px; }
+  .about-padding { padding: 80px 24px; }
+  
+  /* Additional mobile fixes */
+  .serif-heading { letter-spacing: 0; }
+  .hide-mob { display: none !important; }
+  .show-mob { display: block !important; }
 }

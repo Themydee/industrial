@@ -3,18 +3,16 @@ import Btn from "@/components/ui/Btn";
 
 export default function Hero({ onApply }) {
     return (
-        <section id="home" style={{ 
+        <section id="home" className="hero-padding" style={{ 
             minHeight: "100vh", 
             background: "var(--color-ivory)", 
             display: "flex", 
             alignItems: "center", 
-            padding: "0 48px", 
             position: "relative", 
-            overflow: "hidden", 
-            paddingTop: 120 
+            overflow: "hidden"
         }}>
             
-            <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center", paddingBottom: 80 }} className="hero-grid">
+            <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%" }} className="hero-grid">
                 
                 <div className="animate-up">
                     <Tag color="var(--color-red)">The Premier Leadership Community</Tag>
@@ -43,7 +41,7 @@ export default function Hero({ onApply }) {
                     </div>
                 </div>
                 
-                <div className="hide-mob animate-up animate-delay-2" style={{ position: "relative" }}>
+                <div className="animate-up animate-delay-2" style={{ position: "relative" }}>
                     <div style={{ 
                         width: "100%", 
                         aspectRatio: "3/4", 

@@ -2,7 +2,7 @@ import Btn from "@/components/ui/Btn";
 
 export default function Footer() {
     return (
-        <footer style={{ background: "var(--color-ivory-2)", padding: "80px 48px 40px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <footer className="footer-padding" style={{ background: "var(--color-ivory-2)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 40, marginBottom: 80 }}>
                     <div>

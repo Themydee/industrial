@@ -3,7 +3,7 @@ import Tag from "@/components/ui/Tag";
 
 export default function Testimonials() {
     return (
-        <section style={{ background: "var(--color-white)", padding: "120px 48px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <section className="section-padding" style={{ background: "var(--color-white)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 64 }} className="animate-up">
                     <Tag color="var(--color-gold)">What Members Say</Tag>

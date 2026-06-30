@@ -6,7 +6,7 @@ import Tag from "@/components/ui/Tag";
 export default function FAQ() {
     const [open, setOpen] = useState(null);
     return (
-        <section style={{ background: "var(--color-ivory-2)", padding: "120px 48px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <section className="section-padding" style={{ background: "var(--color-ivory-2)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 800, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 64 }} className="animate-up">
                     <Tag color="var(--color-gold)">FAQ</Tag>

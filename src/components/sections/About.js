@@ -10,7 +10,7 @@ export default function About() {
     ];
     
     return (
-        <section id="about" style={{ background: "var(--color-white)", padding: "100px 48px", borderTop: "1px solid var(--color-rule-lt)" }}>
+        <section id="about" className="about-padding" style={{ background: "var(--color-white)", borderTop: "1px solid var(--color-rule-lt)" }}>
             <div style={{ maxWidth: 1000, margin: "0 auto" }}>
                 
                 <div className="animate-up" style={{ textAlign: "center", marginBottom: 80 }}>
