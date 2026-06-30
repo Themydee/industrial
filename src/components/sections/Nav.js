@@ -88,8 +88,8 @@ export default function Nav({ onApply }) {
               {l}
             </a>
           ))}
-          <Button variant="primary" onClick={() => { setMob(false); onApply(); }} style={{ marginTop: 32, justifyContent: "center", padding: "16px" }}>
-            Apply to Join
+          <Button variant="primary" href="/sign-in" onClick={() => setMob(false)} style={{ marginTop: 32, justifyContent: "center", padding: "16px" }}>
+            Sign In
           </Button>
         </div>
       )}
