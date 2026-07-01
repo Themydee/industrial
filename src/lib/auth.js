@@ -55,3 +55,35 @@ export async function clearAdminSession() {
         path: '/',
     });
 }
+
+export async function setMemberSession(memberId, tier) {
+    const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+    const session = await encrypt({ memberId, tier, expires });
+    
+    const cookieStore = await cookies();
+    cookieStore.set('member_session', session, {
+        expires,
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+    });
+}
+
+export async function getMemberSession() {
+    const cookieStore = await cookies();
+    const session = cookieStore.get('member_session')?.value;
+    if (!session) return null;
+    return await decrypt(session);
+}
+
+export async function clearMemberSession() {
+    const cookieStore = await cookies();
+    cookieStore.set('member_session', '', {
+        expires: new Date(0),
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
+    });
+}

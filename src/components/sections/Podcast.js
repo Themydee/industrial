@@ -7,11 +7,12 @@ export default function Podcast() {
         { n: "01", t: "Engines of Growth", d: "Why did some nations industrialise and others did not?", link: "https://www.youtube.com/watch?v=y5ksLCvHtoQ" },
         { n: "02", t: "Manufacturing as the Engine of Growth", d: "How did manufacturing become the driving force behind economic growth and global influence?", link: "https://www.youtube.com/watch?v=H4qHEOjd968&t=1s" },
         { n: "03", t: "Manufacturing as the Engine of Growth II", d: " Can a nation achieve lasting economic prosperity without a strong manufacturing sector?", link: "https://www.youtube.com/watch?v=RFVXd7KHe3o" },
-        { n: "04", t: "Coming Soon...", d: "Anticipate the next episode in the Industrialisation series.", link: "https://www.youtube.com/watch?v=V4oagaWk1Cg"}
+        { n: "04", t: "Coming Soon...", d: "Anticipate the next episode in the Industrialisation series.", isUpcoming: true }
     ];
     const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/y5ksLCvHtoQ");
 
     const getEmbed = (url) => {
+        if (!url) return "";
         const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
         const id = match ? match[1] : url; // Fallback to whatever string was provided if match fails
         return `https://www.youtube.com/embed/${id}?autoplay=1`;
@@ -29,16 +30,18 @@ export default function Podcast() {
                 </div>
                 
                 <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", background: "var(--color-ivory-2)", border: "1px solid var(--color-rule-lt)" }} className="animate-up animate-delay-2">
-                    <iframe width="100%" height="100%" src={embedUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
+                    {embedUrl ? (
+                        <iframe width="100%" height="100%" src={embedUrl} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }} />
+                    ) : null}
                 </div>
                 
-                <div style={{ marginTop: 40 }} className="bento-grid animate-up animate-delay-3">
+                <div style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }} className="animate-up animate-delay-3">
                     {episodes.map(({ n, t, d, link, isUpcoming }) => (
                         <button 
                             key={n} 
                             onClick={() => !isUpcoming && setEmbedUrl(getEmbed(link))}
                             style={{ 
-                                padding: "32px", 
+                                padding: "24px", 
                                 border: "1px solid var(--color-rule-lt)", 
                                 background: "var(--color-ivory)", 
                                 textAlign: "left", 
@@ -48,15 +51,45 @@ export default function Podcast() {
                                 width: "100%",
                                 opacity: isUpcoming ? 0.7 : 1
                             }}
-                            onMouseEnter={e => { if(!isUpcoming) e.currentTarget.style.borderColor = "var(--color-gold)" }}
-                            onMouseLeave={e => { if(!isUpcoming) e.currentTarget.style.borderColor = "var(--color-rule-lt)" }}
+                            onMouseEnter={e => { 
+                                if(!isUpcoming) {
+                                    e.currentTarget.style.borderColor = "var(--color-gold)";
+                                    e.currentTarget.style.transform = "translateY(-2px)";
+                                    e.currentTarget.style.boxShadow = "var(--shadow-md)";
+                                } 
+                            }}
+                            onMouseLeave={e => { 
+                                if(!isUpcoming) {
+                                    e.currentTarget.style.borderColor = "var(--color-rule-lt)";
+                                    e.currentTarget.style.transform = "none";
+                                    e.currentTarget.style.boxShadow = "none";
+                                } 
+                            }}
                         >
                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
                                 <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-red)", letterSpacing: "0.15em" }}>EPISODE {n}</div>
-                                {isUpcoming && <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, background: "var(--color-rule-lt)", padding: "2px 6px", borderRadius: 4 }}>ANTICIPATE</div>}
+                                {isUpcoming ? (
+                                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, background: "var(--color-rule-lt)", padding: "4px 8px", borderRadius: 4, letterSpacing: "0.1em" }}>ANTICIPATE</div>
+                                ) : (
+                                    <div style={{ 
+                                        display: "flex", 
+                                        alignItems: "center", 
+                                        gap: 6, 
+                                        fontFamily: "var(--font-mono)", 
+                                        fontSize: 10, 
+                                        color: "var(--color-dark)", 
+                                        background: "rgba(0,0,0,0.04)",
+                                        padding: "4px 10px",
+                                        borderRadius: 20,
+                                        fontWeight: 600,
+                                        letterSpacing: "0.05em"
+                                    }}>
+                                        <span style={{ fontSize: 10, color: "var(--color-red)" }}>▶</span> WATCH
+                                    </div>
+                                )}
                             </div>
-                            <div className="serif-heading" style={{ fontSize: 20, color: "var(--color-dark)", marginBottom: 12 }}>{t}</div>
-                            <p style={{ fontSize: 14, color: "var(--color-grey)", lineHeight: 1.6, fontWeight: 300 }}>{d}</p>
+                            <div className="serif-heading" style={{ fontSize: 18, color: "var(--color-dark)", marginBottom: 8 }}>{t}</div>
+                            <p style={{ fontSize: 13, color: "var(--color-grey)", lineHeight: 1.5, fontWeight: 300 }}>{d}</p>
                         </button>
                     ))}
                 </div>

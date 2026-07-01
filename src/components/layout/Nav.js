@@ -34,6 +34,7 @@ export default function Nav({ onApply }) {
                             {l.l}
                         </a>
                     ))}
+                    <a href="/login" style={{ fontSize: 13, color: "var(--color-dark)", fontWeight: 600, textDecoration: "none" }}>Member Login</a>
                     <Btn variant={scrolled ? "primary" : "outline"} onClick={onApply}>Apply to Join</Btn>
                 </div>
 
@@ -64,6 +65,9 @@ export default function Nav({ onApply }) {
                             {l.l}
                         </a>
                     ))}
+                    <a href="/login" onClick={() => setMenuOpen(false)} style={{ fontSize: 24, color: "var(--color-dark)", fontWeight: 500, borderBottom: "1px solid var(--color-rule-lt)", paddingBottom: 16 }}>
+                        Member Login
+                    </a>
                 </div>
 
                 <div style={{ paddingBottom: 40 }}>

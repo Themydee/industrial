@@ -10,16 +10,16 @@ export default function Testimonials() {
                     <h2 className="serif-heading" style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "var(--color-dark)", marginTop: 16 }}>The network in action</h2>
                 </div>
                 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 32 }} className="bento-grid">
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }} className="bento-grid">
                     {TESTIMONIALS.map(({ quote, name, org }, i) => (
-                        <div key={name} className={`animate-up animate-delay-${i}`} style={{ background: "var(--color-ivory)", padding: "40px", borderTop: `2px solid var(--color-gold)` }}>
-                            <div className="serif-heading" style={{ fontSize: 40, color: "var(--color-gold)", lineHeight: 1, marginBottom: 16 }}>"</div>
-                            <p style={{ fontSize: 15, fontStyle: "italic", color: "var(--color-mid)", lineHeight: 1.8, marginBottom: 32, fontWeight: 300 }}>{quote}</p>
+                        <div key={name} className={`animate-up animate-delay-${i}`} style={{ background: "var(--color-ivory)", padding: "20px", borderTop: `2px solid var(--color-gold)` }}>
+                            <div className="serif-heading" style={{ fontSize: 32, color: "var(--color-gold)", lineHeight: 1, marginBottom: 12 }}>"</div>
+                            <p style={{ fontSize: 14, fontStyle: "italic", color: "var(--color-mid)", lineHeight: 1.6, marginBottom: 24, fontWeight: 300 }}>{quote}</p>
                             
-                            <div style={{ height: 1, background: "var(--color-rule-lt)", marginBottom: 24 }} />
+                            <div style={{ height: 1, background: "var(--color-rule-lt)", marginBottom: 16 }} />
                             
-                            <div style={{ fontSize: 14, fontWeight: 600, color: "var(--color-dark)", marginBottom: 4 }}>{name}</div>
-                            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-grey)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{org}</div>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--color-dark)", marginBottom: 4 }}>{name}</div>
+                            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--color-grey)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{org}</div>
                         </div>
                     ))}
                 </div>

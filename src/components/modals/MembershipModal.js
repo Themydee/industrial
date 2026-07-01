@@ -8,6 +8,7 @@ export default function MembershipModal({ tierId, onClose }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
     const [billing, setBilling] = useState("monthly");
     const [done, setDone] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ export default function MembershipModal({ tierId, onClose }) {
             await fetch("/api/apply", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ type: "membership", tier: tierId, name, email, phone, billingPref: billing })
+                body: JSON.stringify({ type: "membership", tier: tierId, name, email, phone, password, billingPref: billing })
             });
             setDone(true);
         } catch (e) {
@@ -79,6 +80,10 @@ export default function MembershipModal({ tierId, onClose }) {
                             <div style={{ marginBottom: 12 }}>
                                 <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 }}>Email Address</div>
                                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" style={is({})} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} />
+                            </div>
+                            <div style={{ marginBottom: 12 }}>
+                                <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 }}>Set Password</div>
+                                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Create a password" style={is({})} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} />
                             </div>
                             <div style={{ marginBottom: 18 }}>
                                 <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 }}>WhatsApp Number</div>

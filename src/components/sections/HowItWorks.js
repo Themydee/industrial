@@ -17,12 +17,12 @@ export default function HowItWorks({ onApply }) {
                     <h2 className="serif-heading" style={{ fontSize: "clamp(32px, 4vw, 48px)", color: "var(--color-dark)", marginTop: 16 }}>From curious to connected</h2>
                 </div>
                 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 32 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
                     {steps.map(({ n, title, desc }, i) => (
-                        <div key={n} className={`animate-up animate-delay-${i}`} style={{ background: "var(--color-white)", padding: "40px", border: "1px solid var(--color-rule-lt)" }}>
-                            <div className="serif-heading" style={{ fontSize: 40, color: "var(--color-red)", marginBottom: 24, lineHeight: 1 }}>{n}</div>
-                            <div className="serif-heading" style={{ fontSize: 24, color: "var(--color-dark)", marginBottom: 16 }}>{title}</div>
-                            <p style={{ fontSize: 14, color: "var(--color-grey)", lineHeight: 1.8, fontWeight: 300 }}>{desc}</p>
+                        <div key={n} className={`animate-up animate-delay-${i}`} style={{ background: "var(--color-white)", padding: "20px", border: "1px solid var(--color-rule-lt)" }}>
+                            <div className="serif-heading" style={{ fontSize: 32, color: "var(--color-red)", marginBottom: 16, lineHeight: 1 }}>{n}</div>
+                            <div className="serif-heading" style={{ fontSize: 20, color: "var(--color-dark)", marginBottom: 12 }}>{title}</div>
+                            <p style={{ fontSize: 13, color: "var(--color-grey)", lineHeight: 1.6, fontWeight: 300 }}>{desc}</p>
                         </div>
                     ))}
                 </div>

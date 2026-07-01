@@ -3,15 +3,18 @@ import { useState } from "react";
 import { F, T, STATES } from "@/lib/constants";
 import Btn from "@/components/ui/Btn";
 
+const L = ({ t }) => <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase" }}>{t}</div>;
+const FG = ({ children }) => <div style={{ marginBottom: 13 }}>{children}</div>;
+
 export default function AppModal({ onClose }) {
     const [step, setStep] = useState(1);
     const TOTAL = 4;
-    const [f, setF] = useState({ name: "", email: "", phone: "", country: "", state: "", age: "", role: "", sector: "", stage: "", source: "", why: "", challenge: "", topic: "", network: "", sponsorRef: "", tier: "", extra: "", feature: "Yes — with my full name" });
+    const [f, setF] = useState({ name: "", email: "", phone: "", password: "", country: "", state: "", age: "", role: "", sector: "", stage: "", source: "", why: "", challenge: "", topic: "", network: "", sponsorRef: "", tier: "", extra: "", feature: "Yes — with my full name" });
     const set = (k, v) => setF(p => ({ ...p, [k]: v }));
     const [done, setDone] = useState(false);
 
     const canNext = () => {
-        if (step === 1) return f.name && f.email && f.phone && f.country;
+        if (step === 1) return f.name && f.email && f.phone && f.password && f.country;
         if (step === 2) return f.role && f.sector;
         if (step === 3) return f.why;
         return true;
@@ -20,7 +23,7 @@ export default function AppModal({ onClose }) {
     const [loading, setLoading] = useState(false);
 
     const submit = async () => {
-        if (!f.name || !f.email || !f.phone || !f.country || !f.role || !f.why) { alert("Please complete required fields."); return; }
+        if (!f.name || !f.email || !f.phone || !f.password || !f.country || !f.role || !f.why) { alert("Please complete required fields."); return; }
         setLoading(true);
         try {
             await fetch("/api/apply", {
@@ -39,8 +42,6 @@ export default function AppModal({ onClose }) {
     const is = { width: "100%", padding: "10px 13px", border: `1px solid ${T.ruleLt}`, background: T.white, fontSize: 14, color: T.dark, outline: "none", borderRadius: 0, marginTop: 4, transition: "border-color 0.2s" };
     const ss = { ...is, appearance: "none", backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6B6B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundColor: T.white };
     const ta = { ...is, height: 72, resize: "vertical" };
-    const L = ({ t }) => <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase" }}>{t}</div>;
-    const FG = ({ children }) => <div style={{ marginBottom: 13 }}>{children}</div>;
 
     if (done) return (
         <div style={{ position: "fixed", inset: 0, zIndex: 500, background: "rgba(0,0,0,0.88)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
@@ -72,6 +73,7 @@ export default function AppModal({ onClose }) {
                     {step === 1 && <>
                         <FG><L t="Full Name *" /><input value={f.name} onChange={e => set("name", e.target.value)} placeholder="Your full name" style={is} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} /></FG>
                         <FG><L t="Email Address *" /><input type="email" value={f.email} onChange={e => set("email", e.target.value)} placeholder="your@email.com" style={is} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} /></FG>
+                        <FG><L t="Set Password *" /><input type="password" value={f.password} onChange={e => set("password", e.target.value)} placeholder="Create a password for your account" style={is} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} /></FG>
                         <FG><L t="WhatsApp (with country code) *" /><input type="tel" value={f.phone} onChange={e => set("phone", e.target.value)} placeholder="+234 or +44..." style={is} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} /></FG>
                         <FG><L t="Country of Residence *" /><select value={f.country} onChange={e => set("country", e.target.value)} style={ss}><option value="">Select...</option>{["Nigeria", "Ghana", "Kenya", "South Africa", "Ethiopia", "Rwanda", "Senegal", "Tanzania", "Uganda", "Egypt", "Morocco", "Other African Country", "United Kingdom", "United States", "Canada", "Europe", "Other"].map(c => <option key={c}>{c}</option>)}</select></FG>
                         {f.country === "Nigeria" && <FG><L t="Which State?" /><select value={f.state} onChange={e => set("state", e.target.value)} style={ss}><option value="">Select...</option>{STATES.map(s => <option key={s}>{s}</option>)}</select></FG>}
