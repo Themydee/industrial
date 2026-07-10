@@ -7,7 +7,7 @@ export default function Podcast() {
         { n: "01", t: "Engines of Growth", d: "Why did some nations industrialise and others did not?", link: "https://www.youtube.com/watch?v=y5ksLCvHtoQ" },
         { n: "02", t: "Manufacturing as the Engine of Growth", d: "How did manufacturing become the driving force behind economic growth and global influence?", link: "https://www.youtube.com/watch?v=H4qHEOjd968&t=1s" },
         { n: "03", t: "Manufacturing as the Engine of Growth II", d: " Can a nation achieve lasting economic prosperity without a strong manufacturing sector?", link: "https://www.youtube.com/watch?v=RFVXd7KHe3o" },
-        { n: "04", t: "How Nigeria Became a Consumption Nation"? d: "Why does Nigeria import so much of what it consumes despite its vast natural and human resources?", link: "https://m.youtube.com/watch?v=GIrV1H7cnKc&ra=m" },
+        { n: "04", t: "How Nigeria Became a Consumption Nation", d: "Why does Nigeria import so much of what it consumes despite its vast natural and human resources?", link: "https://m.youtube.com/watch?v=GIrV1H7cnKc&ra=m" }
     ];
     const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/y5ksLCvHtoQ");
 
