@@ -6,27 +6,34 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
     const [filter, setFilter] = useState("All");
     const [viewApp, setViewApp] = useState(null);
     const [loadingAction, setLoadingAction] = useState(false);
+    const [confirmApp, setConfirmApp] = useState(null);
+    const [customAlert, setCustomAlert] = useState(null);
 
     const logout = async () => {
         await fetch("/api/auth/logout", { method: "POST" });
         window.location.href = "/admin/login";
     };
 
-    const approveApplication = async (app) => {
-        if (!confirm(`Are you sure you want to approve ${app.name}?`)) return;
+    const approveApplication = (app) => {
+        setConfirmApp(app);
+    };
+
+    const handleApproveConfirm = async (app) => {
+        setConfirmApp(null);
         setLoadingAction(true);
         try {
-            await fetch("/api/admin/approve", {
+            const res = await fetch("/api/admin/approve", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ applicationId: app.id, email: app.email })
             });
+            if (!res.ok) throw new Error("Approval failed");
             // Update local state to reflect changes instantly without refresh
             setData(data.map(d => d.id === app.id ? { ...d, status: "Approved" } : d));
             if (viewApp && viewApp.id === app.id) setViewApp(null);
-            alert("Application approved and email sent!");
+            setCustomAlert({ message: `Successfully approved ${app.name}! An onboarding email has been sent.`, isSuccess: true });
         } catch (e) {
-            alert("Failed to approve application.");
+            setCustomAlert({ message: `Failed to approve ${app.name}. Please try again.`, isSuccess: false });
         } finally {
             setLoadingAction(false);
         }
@@ -154,7 +161,7 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
                                 <div><div style={{ fontSize: 11, color: "var(--color-grey)", textTransform: "uppercase", marginBottom: 4 }}>Primary Role</div><div style={{ fontWeight: 500 }}>{viewApp.role || "N/A"}</div></div>
                                 <div><div style={{ fontSize: 11, color: "var(--color-grey)", textTransform: "uppercase", marginBottom: 4 }}>Sector</div><div style={{ fontWeight: 500 }}>{viewApp.sector || "N/A"}</div></div>
                                 <div style={{ gridColumn: "1 / -1" }}><div style={{ fontSize: 11, color: "var(--color-grey)", textTransform: "uppercase", marginBottom: 4 }}>Current Stage</div><div style={{ fontWeight: 500 }}>{viewApp.stage || "N/A"}</div></div>
-                                <div style={{ gridColumn: "1 / -1" }}><div style={{ fontSize: 11, color: "var(--color-grey)", textTransform: "uppercase", marginBottom: 4 }}>Network Size</div><div style={{ fontWeight: 500 }}>{viewApp.network || "N/A"}</div></div>
+                                <div style={{ gridColumn: "1 / -1" }}><div style={{ fontSize: 11, color: "var(--color-grey)", textTransform: "uppercase", marginBottom: 4 }}>Company Staff Size</div><div style={{ fontWeight: 500 }}>{viewApp.network || "N/A"}</div></div>
                                 
                                 <div style={{ gridColumn: "1 / -1", fontSize: 13, color: "var(--color-grey)", borderBottom: "1px solid var(--color-rule-lt)", paddingBottom: 8, marginBottom: 8, marginTop: 16, fontWeight: 600 }}>3. Questionnaire & Intent</div>
                                 <div style={{ gridColumn: "1 / -1" }}>
@@ -193,6 +200,43 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
                             )}
                             <button onClick={() => setViewApp(null)} style={{ background: "var(--color-dark)", color: "var(--color-white)", border: "none", padding: "8px 16px", fontSize: 13, fontWeight: 500, borderRadius: 2, cursor: "pointer" }}>Close</button>
                         </div>
+                    </div>
+                </div>
+            )}
+            {/* Custom Confirm Modal */}
+            {confirmApp && (
+                <div onClick={e => { if (e.target === e.currentTarget) setConfirmApp(null) }} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(0,0,0,0.8)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+                    <div style={{ background: "var(--color-white)", maxWidth: 400, width: "100%", borderTop: "4px solid var(--color-red)", padding: 28, animation: "modalIn 0.2s ease" }}>
+                        <h3 className="serif-heading" style={{ fontSize: 24, color: "var(--color-dark)", marginBottom: 12 }}>Confirm Approval</h3>
+                        <p style={{ fontSize: 14, color: "var(--color-grey)", lineHeight: 1.6, marginBottom: 24 }}>
+                            Are you sure you want to approve <strong>{confirmApp.name}</strong>? This will activate their account or set it to 'Pending Payment' and send an email notification.
+                        </p>
+                        <div style={{ display: "flex", justifyContent: "flex-end", gap: 12 }}>
+                            <button onClick={() => setConfirmApp(null)} style={{ padding: "8px 16px", background: "none", border: "1px solid var(--color-rule-lt)", cursor: "pointer", fontSize: 13, fontWeight: 500 }}>
+                                Cancel
+                            </button>
+                            <button onClick={() => handleApproveConfirm(confirmApp)} style={{ padding: "8px 16px", background: "var(--color-red)", color: "white", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 500 }}>
+                                Approve Application
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Custom Alert Modal */}
+            {customAlert && (
+                <div onClick={e => { if (e.target === e.currentTarget) setCustomAlert(null) }} style={{ position: "fixed", inset: 0, zIndex: 1001, background: "rgba(0,0,0,0.8)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+                    <div style={{ background: "var(--color-white)", maxWidth: 400, width: "100%", borderTop: `4px solid ${customAlert.isSuccess ? "green" : "var(--color-red)"}`, padding: 28, textAlign: "center", animation: "modalIn 0.2s ease" }}>
+                        <div style={{ fontSize: 40, marginBottom: 12 }}>{customAlert.isSuccess ? "✅" : "❌"}</div>
+                        <h3 className="serif-heading" style={{ fontSize: 24, color: "var(--color-dark)", marginBottom: 12 }}>
+                            {customAlert.isSuccess ? "Success" : "Error"}
+                        </h3>
+                        <p style={{ fontSize: 14, color: "var(--color-grey)", lineHeight: 1.6, marginBottom: 24 }}>
+                            {customAlert.message}
+                        </p>
+                        <button onClick={() => setCustomAlert(null)} style={{ padding: "8px 24px", background: "var(--color-dark)", color: "white", border: "none", cursor: "pointer", fontSize: 13, fontWeight: 500 }}>
+                            OK
+                        </button>
                     </div>
                 </div>
             )}
