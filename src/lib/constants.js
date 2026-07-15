@@ -17,35 +17,35 @@ export const F = {
 export const TIERS = [
     {
         id: "foundation", name: "Foundation", tagline: "Access the knowledge. Join the conversation.", price: "Free", sub: "Always free", annual: null, color: T.dark, badge: null, cta: "Join Free",
-        features: ["All public YouTube episodes", "Weekly episode notifications", "Community WhatsApp broadcast", "Monthly newsletter & insights", "Free resource library", "Quarterly free webinar", "Community directory listing"]
+        features: ["Public YT episodes", "Weekly notifications", "WhatsApp Broadcast", "Monthly newsletter", "Resource library", "Quarterly webinars", "Directory listing"]
     },
     {
         id: "builder", name: "Builder", tagline: "Build your knowledge. Build your network.", price: "$15", sub: "per month · ₦21,000", annual: "$150 / ₦210,000 per year (save 2 months)", color: T.dark, badge: null, cta: "Join as Builder",
-        features: ["Everything in Foundation", "Episode transcripts & show notes", "Monthly exclusive members-only content", "Private Builder WhatsApp group", "Prof. Banji's monthly reading list", "20% off all masterclasses", "Quarterly live Q&A with Prof. Banji", "Exclusive policy analysis library"]
+        features: ["Foundation features +", "Transcripts & show notes", "Exclusive member content", "Private WhatsApp group", "Monthly reading list", "20% off masterclasses", "Quarterly live Q&A", "Policy analysis library"]
     },
     {
         id: "catalyst", name: "Catalyst", tagline: "Accelerate your impact. Access real opportunity.", price: "$75", sub: "per month · ₦105,000", annual: "$750 / ₦1,050,000 per year (save 2 months)", color: T.gold2, badge: "Most Popular", cta: "Join as Catalyst",
-        features: ["Everything in Builder", "Monthly 90-min Catalyst Masterclass", "Catalyst Deal Board — funding & tenders", "Monthly sector intelligence digest", "Priority Professional Directory listing", "Bi-annual 1:1 advisory call with mentor", "Catalyst Peer Circle — 8–12 vetted members", "Closed-door virtual roundtables", "Annual Certificate of Membership"]
+        features: ["Builder features +", "Monthly Masterclass", "Deal Board (funding/tenders)", "Monthly sector digest", "Priority directory listing", "1:1 advisory call", "Vetted Peer Circle", "Virtual roundtables", "Membership certificate"]
     },
     {
         id: "vanguard", name: "Vanguard", tagline: "Lead the movement. Shape the agenda.", price: "$500", sub: "per month · ₦700,000", annual: "$5,000 / ₦7,000,000 upfront (save 2 months)", color: T.red, badge: "50 places only", cta: "Apply for Vanguard",
-        features: ["Everything in Catalyst", "Annual 60-min 1:1 with Prof. Banji personally", "Named Vanguard Patron on all platforms", "Exclusive Vanguard WhatsApp with Prof. Banji", "Invitation to annual Vanguard Dinner", "Co-authorship on publications & policy papers", "First right on all speaking & panel slots", "Direct referral to Prof. Banji's network", "Input into episode topics & direction", "Annual bespoke sector intelligence report"]
+        features: ["Catalyst features +", "1:1 with Prof. Banji", "Vanguard Patron status", "Vanguard WhatsApp access", "Annual Vanguard Dinner", "Policy co-authorship", "Speaking/panel priority", "Network referrals", "Episode input & direction", "Bespoke intelligence report"]
     },
 ];
 
 export const OFFERINGS = [
-    { ico: "🎓", title: "Masterclasses", desc: "Monthly 90-minute expert sessions on agro-industrial development, development finance and industrial policy.", price: "From $40 / ₦56,000" },
-    { ico: "📅", title: "Half-Day Workshops", desc: "Quarterly deep-dives running 4–5 hours with workbooks and breakout groups, co-designed with practitioners.", price: "$120–$200 / ₦168,000–₦280,000" },
-    { ico: "🏛️", title: "In-Person Summits", desc: "Bi-annual summits in Lagos and Abuja. The rooms where partnerships and policy decisions get made.", price: "$300–$600 / ₦420,000–₦840,000" },
-    { ico: "🤝", title: "Peer Circles", desc: "Vetted accountability groups of 8–12 professionals, matched by sector and geography.", price: "Catalyst tier and above" },
-    { ico: "📋", title: "Deal Board", desc: "Curated funding calls, grants, agro-processing tenders and investment leads — filtered monthly.", price: "Catalyst tier and above" },
-    { ico: "📖", title: "Research & Policy Briefs", desc: "Commissioned briefs, sector intelligence, and the annual State of African Industrialisation Report.", price: "From $500 per brief" },
+    { ico: "🎓", title: "Masterclasses", desc: "Monthly expert sessions on agro-industrial development and policy.", price: "From $40 / ₦56,000" },
+    { ico: "📅", title: "Half-Day Workshops", desc: "Interactive deep-dives with workbooks and breakout groups.", price: "$120–$200 / ₦168,000–₦280,000" },
+    { ico: "🏛️", title: "In-Person Summits", desc: "Bi-annual partnership and networking events in Lagos & Abuja.", price: "$300–$600 / ₦420,000–₦840,000" },
+    { ico: "🤝", title: "Peer Circles", desc: "Vetted accountability groups matched by sector and geography.", price: "Catalyst tier and above" },
+    { ico: "📋", title: "Deal Board", desc: "Curated funding calls, grants, and investment leads.", price: "Catalyst tier and above" },
+    { ico: "📖", title: "Research & Policy Briefs", desc: "Sector intelligence and the annual State of African Industrialisation Report.", price: "From $500 per brief" },
 ];
 
 export const TESTIMONIALS = [
-    { quote: "Prof. Banji's work sits at the exact intersection where Africa's food security challenges meet the industrial policy solutions that have transformed other economies. This community is long overdue.", name: "Development Finance Professional", org: "Pan-African Institution" },
-    { quote: "The depth of knowledge here is unlike anything available on the continent. One conversation in the Catalyst circle opened a partnership that took months off our fundraising timeline.", name: "Agribusiness Founder", org: "Ogun State, Nigeria" },
-    { quote: "I have attended summits on African industrialisation for twenty years. What Triple O is building here is the practitioner version — the conversations that actually move things.", name: "Senior Policy Adviser", org: "West African Government" },
+    { quote: "Prof. Banji's work sits at the intersection of Africa's food challenges and industrial solutions. This community is long over due.", name: "Development Finance Professional", org: "Pan-African Institution" },
+    { quote: "The depth of knowledge is unmatched. A single Catalyst circle connection saved us months on our fundraising timeline.", name: "Agribusiness Founder", org: "Ogun State, Nigeria" },
+    { quote: "What is being built here is the practitioner version of development—the conversations that actually move things.", name: "Senior Policy Adviser", org: "West African Government" },
 ];
 
 export const FAQS = [
