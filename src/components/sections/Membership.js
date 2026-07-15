@@ -89,9 +89,15 @@ export default function Membership({ onJoin }) {
                                     )}
                                 </div>
 
-                                <Btn variant={isVanguard ? "primary" : "outline"} onClick={() => onJoin(tier.id)} style={{ width: "100%", justifyContent: "center", fontSize: 12, padding: "10px 16px" }}>
-                                    {tier.cta}
-                                </Btn>
+                                {tier.id === "foundation" ? (
+                                    <Btn variant="outline" href="#podcast" style={{ width: "100%", justifyContent: "center", fontSize: 12, padding: "10px 16px" }}>
+                                        {tier.cta}
+                                    </Btn>
+                                ) : (
+                                    <Btn variant={isVanguard ? "primary" : "outline"} onClick={() => onJoin(tier.id)} style={{ width: "100%", justifyContent: "center", fontSize: 12, padding: "10px 16px" }}>
+                                        {tier.cta}
+                                    </Btn>
+                                )}
                             </div>
                         );
                     })}

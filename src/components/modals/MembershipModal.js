@@ -18,7 +18,7 @@ export default function MembershipModal({ tierId, onClose }) {
     const is = v => ({ width: "100%", padding: "10px 13px", border: `1px solid var(--color-rule-lt)`, background: "var(--color-white)", fontSize: 14, color: "var(--color-dark)", outline: "none", borderRadius: 0, ...v });
 
     const submit = async () => {
-        if (!name || !email || !phone) { alert("Please complete all fields."); return; }
+        if (!name || !email || !phone || !password) { alert("Please complete all fields."); return; }
         if (!email.includes("@")) { alert("Please enter a valid email."); return; }
         setLoading(true);
         try {
@@ -54,24 +54,21 @@ export default function MembershipModal({ tierId, onClose }) {
                         </div>
                     ) : (
                         <>
-                            {tierId !== "foundation" && (
-                                <div style={{ marginBottom: 16 }}>
-                                    <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 7 }}>Billing preference</div>
-                                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }} className="billing-grid">
-                                        {["monthly", "annual"].map(b => (
-                                            <button key={b} onClick={() => setBilling(b)} style={{ padding: 10, border: `1px solid ${billing === b ? T.red : T.ruleLt}`, background: billing === b ? T.redLt : T.white, fontSize: 12, fontWeight: 600, color: billing === b ? T.red : T.dark, cursor: "pointer", transition: "all 0.2s" }}>
-                                                {b === "monthly" ? "Monthly" : "Annual (save 2 months)"}
-                                            </button>
-                                        ))}
-                                    </div>
+                            <div style={{ marginBottom: 16 }}>
+                                <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 7 }}>Billing preference</div>
+                                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }} className="billing-grid">
+                                    {["monthly", "annual"].map(b => (
+                                        <button key={b} onClick={() => setBilling(b)} style={{ padding: 10, border: `1px solid ${billing === b ? T.red : T.ruleLt}`, background: billing === b ? T.redLt : T.white, fontSize: 12, fontWeight: 600, color: billing === b ? T.red : T.dark, cursor: "pointer", transition: "all 0.2s" }}>
+                                            {b === "monthly" ? "Monthly" : "Annual (save 2 months)"}
+                                        </button>
+                                    ))}
                                 </div>
-                            )}
+                            </div>
                             <div style={{ fontSize: 12, color: T.grey, background: T.goldLt, borderLeft: `2px solid ${T.red}`, padding: "11px 13px", marginBottom: 18, lineHeight: 1.6, fontWeight: 300 }}>
                                 <strong style={{ color: T.dark, fontWeight: 600 }}>Payment: </strong>
-                                {tierId === "foundation" ? "No payment required — free forever." :
-                                    tierId === "vanguard" ? `Monthly: $500 (₦700,000) or annual upfront: $5,000 (₦7,000,000). Limited to 50 members — we'll contact you within 24 hours.` :
-                                        tierId === "builder" ? `Monthly: $15 (₦21,000) or annually: $150 (₦210,000). Via Paystack (Nigeria) or Stripe. Link sent within 48 hours.` :
-                                            `Monthly: $75 (₦105,000) or annually: $750 (₦1,050,000). Via Paystack (Nigeria) or Stripe. Link sent within 48 hours.`}
+                                {tierId === "vanguard" ? `Monthly: $500 (₦700,000) or annual upfront: $5,000 (₦7,000,000). Limited to 50 members — we'll contact you within 24 hours.` :
+                                    tierId === "builder" ? `Monthly: $15 (₦21,000) or annually: $150 (₦210,000). Via Paystack (Nigeria) or Stripe. Link sent within 48 hours.` :
+                                        `Monthly: $75 (₦105,000) or annually: $750 (₦1,050,000). Via Paystack (Nigeria) or Stripe. Link sent within 48 hours.`}
                             </div>
                             <div style={{ marginBottom: 12 }}>
                                 <div style={{ fontFamily: F.mono, fontSize: 10, color: T.dark, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 4 }}>Full Name</div>

@@ -9,7 +9,7 @@ const FG = ({ children }) => <div style={{ marginBottom: 13 }}>{children}</div>;
 export default function AppModal({ onClose }) {
     const [step, setStep] = useState(1);
     const TOTAL = 4;
-    const [f, setF] = useState({ name: "", email: "", phone: "", password: "", country: "", state: "", age: "", role: "", sector: "", stage: "", source: "", why: "", challenge: "", topic: "", network: "", sponsorRef: "", tier: "", extra: "", feature: "Yes — with my full name" });
+    const [f, setF] = useState({ name: "", email: "", phone: "", password: "", country: "", state: "", age: "", role: "", sector: "", stage: "", source: "", why: "", challenge: "", topic: "", network: "", sponsorRef: "", tier: "Builder", extra: "", feature: "Yes — with my full name" });
     const set = (k, v) => setF(p => ({ ...p, [k]: v }));
     const [done, setDone] = useState(false);
 
@@ -93,7 +93,7 @@ export default function AppModal({ onClose }) {
                     {step === 4 && <>
                         <FG><L t="Professional network size (approx.)" /><select value={f.network} onChange={e => set("network", e.target.value)} style={ss}><option value="">Select...</option>{["Under 100", "100–500", "500–2,000", "2,000–10,000", "Over 10,000"].map(n => <option key={n}>{n}</option>)}</select></FG>
                         <FG><L t="Know a potential sponsor or partner? (optional)" /><input value={f.sponsorRef} onChange={e => set("sponsorRef", e.target.value)} placeholder="Name, organisation, contact..." style={is} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} /></FG>
-                        <FG><L t="Membership tier interest" /><select value={f.tier} onChange={e => set("tier", e.target.value)} style={ss}><option value="">Foundation (Free) to start</option><option>Foundation — Free</option><option>Builder — $15/mo (₦21,000)</option><option>Catalyst — $75/mo (₦105,000)</option><option>Vanguard — $500/mo (₦700,000)</option><option>Not sure yet</option></select></FG>
+                        <FG><L t="Membership tier interest" /><select value={f.tier} onChange={e => set("tier", e.target.value)} style={ss}><option value="Builder">Builder — $15/mo (₦21,000)</option><option value="Catalyst">Catalyst — $75/mo (₦105,000)</option><option value="Vanguard">Vanguard — $500/mo (₦700,000)</option><option value="Not sure yet">Not sure yet</option></select></FG>
                         <FG><L t="Anything else you want us to know?" /><textarea value={f.extra} onChange={e => set("extra", e.target.value)} placeholder="This is your space..." style={ta} onFocus={e => e.target.style.borderColor = T.red} onBlur={e => e.target.style.borderColor = T.ruleLt} /></FG>
                         <FG><L t="May we feature your story in community content?" /><select value={f.feature} onChange={e => set("feature", e.target.value)} style={ss}><option>Yes — with my full name</option><option>Yes — anonymously only</option><option>No — keep responses private</option></select></FG>
                     </>}

@@ -8,15 +8,23 @@ export async function POST(req) {
     try {
         const body = await req.json();
 
-        // Basic validation including password
-        if (!body.type || !body.name || !body.email || !body.phone || !body.password) {
-            return NextResponse.json({ error: "Missing required fields including password" }, { status: 400 });
+        // Basic validation including password (only for paid/interested memberships)
+        if (!body.type || !body.name || !body.email || !body.phone) {
+            return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
 
-        const existing = await db.select().from(members).where(eq(members.email, body.email)).limit(1);
-        
-        if (existing.length > 0) {
-            return NextResponse.json({ error: "Account already exists with this email" }, { status: 400 });
+        const rawTier = body.tier || 'Builder';
+        const isPaid = !rawTier.toLowerCase().includes('foundation');
+
+        if (isPaid && !body.password) {
+            return NextResponse.json({ error: "Password is required for membership account creation" }, { status: 400 });
+        }
+
+        if (isPaid) {
+            const existing = await db.select().from(members).where(eq(members.email, body.email)).limit(1);
+            if (existing.length > 0) {
+                return NextResponse.json({ error: "Account already exists with this email" }, { status: 400 });
+            }
         }
 
         // Insert into applications
@@ -45,29 +53,31 @@ export async function POST(req) {
 
         // Determine initial subscription status
         let initialStatus = 'Pending Review'; // ALL tiers require admin approval now
-        let assignedTier = 'Foundation';
+        let assignedTier = 'Builder';
 
-        if (body.tier === 'foundation' || body.tier?.includes('Foundation')) {
-            assignedTier = 'Foundation';
-        } else if (body.tier === 'builder' || body.tier?.includes('Builder')) {
+        if (rawTier.toLowerCase().includes('builder')) {
             assignedTier = 'Builder';
-        } else if (body.tier === 'catalyst' || body.tier?.includes('Catalyst')) {
+        } else if (rawTier.toLowerCase().includes('catalyst')) {
             assignedTier = 'Catalyst';
-        } else if (body.tier === 'vanguard' || body.tier?.includes('Vanguard')) {
+        } else if (rawTier.toLowerCase().includes('vanguard')) {
             assignedTier = 'Vanguard';
+        } else if (rawTier.toLowerCase().includes('foundation')) {
+            assignedTier = 'Foundation';
         }
 
-        const passwordHash = await bcrypt.hash(body.password, 10);
+        if (isPaid) {
+            const passwordHash = await bcrypt.hash(body.password, 10);
 
-        // Insert into members
-        await db.insert(members).values({
-            name: body.name,
-            email: body.email,
-            phone: body.phone,
-            passwordHash,
-            tier: assignedTier,
-            subscriptionStatus: initialStatus,
-        });
+            // Insert into members
+            await db.insert(members).values({
+                name: body.name,
+                email: body.email,
+                phone: body.phone,
+                passwordHash,
+                tier: assignedTier,
+                subscriptionStatus: initialStatus,
+            });
+        }
 
         return NextResponse.json({ success: true });
         

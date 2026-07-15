@@ -73,9 +73,6 @@ export default function LoginPage() {
                     </button>
                 </form>
 
-                <div style={{ marginTop: 24, textAlign: "center", fontSize: 13, color: "var(--color-grey)" }}>
-                    Don't have an account? <a href="/register" style={{ color: "var(--color-gold)", textDecoration: "underline" }}>Register</a>
-                </div>
             </div>
         </div>
     );

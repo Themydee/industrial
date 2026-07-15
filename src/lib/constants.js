@@ -16,7 +16,7 @@ export const F = {
 
 export const TIERS = [
     {
-        id: "foundation", name: "Foundation", tagline: "Access the knowledge. Join the conversation.", price: "Free", sub: "Always free", annual: null, color: T.dark, badge: null, cta: "Join Free",
+        id: "foundation", name: "Foundation", tagline: "Access the knowledge. Join the conversation.", price: "Free", sub: "Always free", annual: null, color: T.dark, badge: null, cta: "Explore Content",
         features: ["Public YT episodes", "Weekly notifications", "WhatsApp Broadcast", "Monthly newsletter", "Resource library", "Quarterly webinars", "Directory listing"]
     },
     {
