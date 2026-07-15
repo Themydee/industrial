@@ -32,8 +32,7 @@ export default function Footer() {
                     <div style={{ fontSize: 13, color: "var(--color-grey)", fontWeight: 300 }}>© {new Date().getFullYear()} Industrialise Africa. All rights reserved.</div>
                     <div style={{ display: "flex", gap: 24 }}>
                         <a href="https://www.youtube.com/@OyebanjiOyelaran" target="_blank" rel="noreferrer" style={{ fontSize: 13, color: "var(--color-grey)", fontWeight: 300 }}>YouTube</a>
-                        <a href="#" style={{ fontSize: 13, color: "var(--color-grey)", fontWeight: 300 }}>LinkedIn</a>
-                        <a href="#" style={{ fontSize: 13, color: "var(--color-grey)", fontWeight: 300 }}>Twitter</a>
+                        <a href="https://www.linkedin.com/in/prof-oyebanji-oyelaran-424625412/" target="_blank" rel="noreferrer" style={{ fontSize: 13, color: "var(--color-grey)", fontWeight: 300 }}>LinkedIn</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ export default function About() {
                         Prof. Banji Oyelaran-Oyeyinka is the first Nigerian Professor in Industrialisation. He has spent four decades inside the rooms where Africa's development was decided.
                     </p>
                     <div style={{ marginTop: 24 }}>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13, color: "var(--color-red)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", borderBottom: "1px solid var(--color-red)", paddingBottom: 2 }}>
+                        <a href="https://www.linkedin.com/in/prof-oyebanji-oyelaran-424625412/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13, color: "var(--color-red)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", borderBottom: "1px solid var(--color-red)", paddingBottom: 2 }}>
                             <span>Connect on LinkedIn</span>
                             <span>↗</span>
                         </a>
