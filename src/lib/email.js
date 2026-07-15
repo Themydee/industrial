@@ -3,7 +3,7 @@ import { emailLogs } from '@/db/schema';
 
 // Placeholder for Resend API Key
 const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_placeholder';
-const FROM_EMAIL = 'hello@industrialiseafrica.com';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 
 /**
  * Sends an email using the Resend API and logs it in the database.

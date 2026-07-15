@@ -28,7 +28,8 @@ export default async function DashboardPage() {
         name: member.name,
         email: member.email,
         tier: member.tier,
-        subscriptionStatus: member.subscriptionStatus
+        subscriptionStatus: member.subscriptionStatus,
+        paymentLink: member.profileData
     };
 
     return <ClientDashboard member={safeMember} />;

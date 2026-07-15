@@ -30,7 +30,7 @@ export async function POST(req) {
             return NextResponse.json({ error: "Your application is still under review. You will receive an email once approved." }, { status: 403 });
         }
 
-        if (user[0].subscriptionStatus !== 'Active' && user[0].subscriptionStatus !== 'Comped') {
+        if (user[0].subscriptionStatus !== 'Active' && user[0].subscriptionStatus !== 'Comped' && user[0].subscriptionStatus !== 'Pending Payment') {
             return NextResponse.json({ error: "Your subscription is not active. Please complete payment." }, { status: 403 });
         }
 

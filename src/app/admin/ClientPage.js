@@ -8,6 +8,7 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
     const [loadingAction, setLoadingAction] = useState(false);
     const [confirmApp, setConfirmApp] = useState(null);
     const [customAlert, setCustomAlert] = useState(null);
+    const [paymentLink, setPaymentLink] = useState("");
 
     const logout = async () => {
         await fetch("/api/auth/logout", { method: "POST" });
@@ -15,6 +16,7 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
     };
 
     const approveApplication = (app) => {
+        setPaymentLink("");
         setConfirmApp(app);
     };
 
@@ -25,7 +27,7 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
             const res = await fetch("/api/admin/approve", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ applicationId: app.id, email: app.email })
+                body: JSON.stringify({ applicationId: app.id, email: app.email, paymentLink })
             });
             if (!res.ok) throw new Error("Approval failed");
             // Update local state to reflect changes instantly without refresh
@@ -211,6 +213,16 @@ export default function AdminClientPage({ initialData, metrics = { totalMembers:
                         <p style={{ fontSize: 14, color: "var(--color-grey)", lineHeight: 1.6, marginBottom: 24 }}>
                             Are you sure you want to approve <strong>{confirmApp.name}</strong>? This will activate their account or set it to 'Pending Payment' and send an email notification.
                         </p>
+                        <div style={{ marginBottom: 24 }}>
+                            <label style={{ display: "block", fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--color-dark)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.05em" }}>Stripe / Paystack Payment Link</label>
+                            <input 
+                                type="url" 
+                                placeholder="https://buy.stripe.com/... or https://paystack.com/pay/..."
+                                value={paymentLink}
+                                onChange={e => setPaymentLink(e.target.value)}
+                                style={{ width: "100%", padding: "10px 12px", border: "1px solid var(--color-rule-lt)", fontSize: 13, outline: "none", boxSizing: "border-box" }}
+                            />
+                        </div>
                         <div style={{ display: "flex", justifyContent: "flex-end", gap: 12 }}>
                             <button onClick={() => setConfirmApp(null)} style={{ padding: "8px 16px", background: "none", border: "1px solid var(--color-rule-lt)", cursor: "pointer", fontSize: 13, fontWeight: 500 }}>
                                 Cancel
