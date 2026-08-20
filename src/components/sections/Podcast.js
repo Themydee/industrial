@@ -5,7 +5,6 @@ import Tag from "@/components/ui/Tag";
 
 
 export default function Podcast() {
-    const [episodes, setEpisodes] = useState(defaultEpisodes);
     const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/y5ksLCvHtoQ");
 
     const getEmbed = (url) => {
