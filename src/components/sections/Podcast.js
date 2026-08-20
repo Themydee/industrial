@@ -1,23 +1,48 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tag from "@/components/ui/Tag";
 
+const defaultEpisodes = [
+    { n: "01", t: "Engines of Growth", d: "Why did some nations industrialise and others did not?", link: "https://www.youtube.com/watch?v=y5ksLCvHtoQ" },
+    { n: "02", t: "Manufacturing as the Engine of Growth", d: "How did manufacturing become the driving force behind economic growth and global influence?", link: "https://www.youtube.com/watch?v=H4qHEOjd968&t=1s" },
+    { n: "03", t: "Manufacturing as the Engine of Growth II", d: " Can a nation achieve lasting economic prosperity without a strong manufacturing sector?", link: "https://www.youtube.com/watch?v=RFVXd7KHe3o" },
+    { n: "04", t: "How Nigeria Became a Consumption Nation", d: "Why does Nigeria import so much of what it consumes despite its vast natural and human resources?", link: "https://m.youtube.com/watch?v=GIrV1H7cnKc&ra=m" },
+    { n: "05", t: "Built on Sand: The Roots of Nigeria's Industrial Failure", d: "Why did Nigeria's industrialization fail despite huge investments, trained engineers, and ambitious policies?", link: "https://www.youtube.com/watch?v=RL-0wxGFr28" }
+];
+
 export default function Podcast() {
-    const episodes = [
-        { n: "01", t: "Engines of Growth", d: "Why did some nations industrialise and others did not?", link: "https://www.youtube.com/watch?v=y5ksLCvHtoQ" },
-        { n: "02", t: "Manufacturing as the Engine of Growth", d: "How did manufacturing become the driving force behind economic growth and global influence?", link: "https://www.youtube.com/watch?v=H4qHEOjd968&t=1s" },
-        { n: "03", t: "Manufacturing as the Engine of Growth II", d: " Can a nation achieve lasting economic prosperity without a strong manufacturing sector?", link: "https://www.youtube.com/watch?v=RFVXd7KHe3o" },
-        { n: "04", t: "How Nigeria Became a Consumption Nation", d: "Why does Nigeria import so much of what it consumes despite its vast natural and human resources?", link: "https://m.youtube.com/watch?v=GIrV1H7cnKc&ra=m" },
-        { n: "05", t: "Built on Sand: The Roots of Nigeria's Industrial Failure", d: "Why did Nigeria's industrialization fail despite huge investments, trained engineers, and ambitious policies?", link: "https://www.youtube.com/watch?v=RL-0wxGFr28" }
-    ];
+    const [episodes, setEpisodes] = useState(defaultEpisodes);
     const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/y5ksLCvHtoQ");
 
     const getEmbed = (url) => {
         if (!url) return "";
         const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
-        const id = match ? match[1] : url; // Fallback to whatever string was provided if match fails
+        const id = match ? match[1] : url;
         return `https://www.youtube.com/embed/${id}?autoplay=1`;
     };
+
+    useEffect(() => {
+        async function loadVideos() {
+            try {
+                const res = await fetch("/api/videos");
+                const data = await res.json();
+                if (data.success && data.videos && data.videos.length > 0) {
+                    const mapped = data.videos.map((v, idx) => ({
+                        n: v.episodeNumber || String(idx + 1).padStart(2, '0'),
+                        t: v.title,
+                        d: v.description,
+                        link: v.youtubeUrl,
+                        youtubeId: v.youtubeId
+                    }));
+                    setEpisodes(mapped);
+                    setEmbedUrl(`https://www.youtube.com/embed/${mapped[0].youtubeId}?autoplay=0`);
+                }
+            } catch (err) {
+                console.error("Failed to load videos from API:", err);
+            }
+        }
+        loadVideos();
+    }, []);
 
     return (
         <section id="podcast" className="section-padding" style={{ background: "var(--color-white)", borderTop: "1px solid var(--color-rule-lt)" }}>
@@ -39,7 +64,7 @@ export default function Podcast() {
                 <div style={{ marginTop: 32, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }} className="animate-up animate-delay-3">
                     {episodes.map(({ n, t, d, link, isUpcoming }) => (
                         <button 
-                            key={n} 
+                            key={n + t} 
                             onClick={() => !isUpcoming && setEmbedUrl(getEmbed(link))}
                             style={{ 
                                 padding: "18px 16px", 

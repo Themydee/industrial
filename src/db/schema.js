@@ -118,3 +118,17 @@ export const emailLogs = pgTable('email_logs', {
     status: varchar('status', { length: 50 }),
     createdAt: timestamp('created_at').defaultNow().notNull(),
 });
+
+export const videos = pgTable('videos', {
+    id: serial('id').primaryKey(),
+    title: varchar('title', { length: 255 }).notNull(),
+    description: text('description'),
+    youtubeUrl: text('youtube_url').notNull(),
+    youtubeId: varchar('youtube_id', { length: 100 }).notNull(),
+    episodeNumber: varchar('episode_number', { length: 50 }),
+    minTierRequired: varchar('min_tier_required', { length: 50 }).default('Foundation').notNull(),
+    status: varchar('status', { length: 50 }).default('Published'),
+    publishedAt: timestamp('published_at').defaultNow().notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
