@@ -8,10 +8,10 @@ export const T = {
     red: "#8B1A1A", red2: "#6D1515", redLt: "rgba(139,26,26,0.08)",
 };
 
-export const F = { 
-    display: "'Cormorant Garamond', Georgia, serif", 
-    body: "'Inter', system-ui, sans-serif", 
-    mono: "'Space Mono', monospace" 
+export const F = {
+    display: "'Cormorant Garamond', Georgia, serif",
+    body: "'Inter', system-ui, sans-serif",
+    mono: "'Space Mono', monospace"
 };
 
 export const TIERS = [
@@ -43,9 +43,14 @@ export const OFFERINGS = [
 ];
 
 export const TESTIMONIALS = [
-    { quote: "Prof. Banji's work sits at the intersection of Africa's food challenges and industrial solutions. This community is long over due.", name: "Development Finance Professional", org: "Pan-African Institution" },
-    { quote: "The depth of knowledge is unmatched. A single Catalyst circle connection saved us months on our fundraising timeline.", name: "Agribusiness Founder", org: "Ogun State, Nigeria" },
-    { quote: "What is being built here is the practitioner version of development—the conversations that actually move things.", name: "Senior Policy Adviser", org: "West African Government" },
+    { quote: "Great episode, Prof! It clearly exposes why Nigeria's industrial projects consistently fail: they are flashy, politicized, and poorly planned—lacking infrastructure, capacity, systemic integration, and discipline. Unlike nations that successfully industrialized through disciplined government backing and export-led planning, Nigeria failed to lay the groundwork. Projects like the Dangote Refinery succeeded not because of the government, but despite it—filling the gap left by decades of state failure. The question remains: can Nigeria's industrial dream be revived?", name: "Anonymous" },
+
+    { quote: "Great insights Prof. The common denominator is government ownership and interference. Our governments are not production- oriented and will not therefore be interested in industrial development. Unless there is a change of trajectory from consumption to production. But the prognosis for change is not good. We are therefore trapped in a perfect storm of instant gratification and low national and racial ambition. There was a country indeed", name: "Anonymous" },
+
+    { quote: "Thanks for sharing Prof. I came to China for a brief visit and as usual I am tongue-tied at their continued development. May we be able to turn things around in this generation. More grease Prof.", name: "Anonymous", org: "Delta Steel Nig Ltd." },
+
+    { quote: "Another extremely informative and eye opening story of Industrial failure in Nigeria. Although there have been many such failures in India also, the case of Nigeria is shocking. Almost all the manufacturing sectors from fertiliser to steel to paper to aluminium are wiped out in the country. Nigeria has enough oil reserves yet it did not succeed in energy self-reliant. Very unfortunate. Please keep on posting other episodes also. Although I have been so close to you for almost quarter of a century but never discussed in such details. It is really very scary. No country can prosper only on imports.", name: "Anonymous" }
+
 ];
 
 export const FAQS = [
