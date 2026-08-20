@@ -5,7 +5,9 @@ import Tag from "@/components/ui/Tag";
 
 
 export default function Podcast() {
-    const [embedUrl, setEmbedUrl] = useState("https://www.youtube.com/embed/y5ksLCvHtoQ");
+    const [episodes, setEpisodes] = useState([]);
+    const [embedUrl, setEmbedUrl] = useState("");
+    const [loading, setLoading] = useState(true);
 
     const getEmbed = (url) => {
         if (!url) return "";
@@ -17,6 +19,7 @@ export default function Podcast() {
     useEffect(() => {
         async function loadVideos() {
             try {
+                setLoading(true);
                 const res = await fetch("/api/videos");
                 const data = await res.json();
                 if (data.success && data.videos && data.videos.length > 0) {
@@ -32,6 +35,8 @@ export default function Podcast() {
                 }
             } catch (err) {
                 console.error("Failed to load videos from API:", err);
+            } finally {
+                setLoading(false);
             }
         }
         loadVideos();
