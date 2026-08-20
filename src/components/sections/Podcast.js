@@ -93,7 +93,28 @@ export default function Podcast() {
                             }}
                         >
                             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                                <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--color-red)", letterSpacing: "0.1em" }}>EPISODE {n}</div>
+                                {(() => {
+                                    const tagText = (n || "").trim();
+                                    const isSpecialTag = tagText && (
+                                        tagText.toLowerCase().includes("special") || 
+                                        tagText.toLowerCase().includes("bonus") || 
+                                        tagText.toLowerCase().startsWith("se")
+                                    );
+
+                                    if (isSpecialTag) {
+                                        return (
+                                            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "#B8860B", background: "rgba(212, 175, 55, 0.12)", border: "1px solid rgba(212, 175, 55, 0.3)", padding: "2px 8px", borderRadius: 4, letterSpacing: "0.1em", fontWeight: 600 }}>
+                                                ⭐ {tagText.toUpperCase()}
+                                            </div>
+                                        );
+                                    }
+
+                                    return (
+                                        <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--color-red)", letterSpacing: "0.1em" }}>
+                                            {tagText ? (isNaN(tagText) ? tagText.toUpperCase() : `EPISODE ${tagText}`) : "EPISODE"}
+                                        </div>
+                                    );
+                                })()}
                                 {isUpcoming ? (
                                     <div style={{ fontFamily: "var(--font-mono)", fontSize: 8, background: "var(--color-rule-lt)", padding: "3px 6px", borderRadius: 3, letterSpacing: "0.08em" }}>ANTICIPATE</div>
                                 ) : (
